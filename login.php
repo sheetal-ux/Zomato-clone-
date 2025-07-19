@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
 
     // Insert into database using prepared statement
-    $stmt = $conn->prepare("INSERT INTO login (email, pass) VALUES (?, ?)");
+    $stmt = $conn->prepare("INSERT INTO login (email,pass) VALUES (?, ?)");
     $stmt->bind_param("ss", $email, $hashedPassword);
     $stmt->execute();
     $stmt->close();
@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
